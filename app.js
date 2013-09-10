@@ -3,15 +3,10 @@ var express = require('express')
   util = require('util'),
   request = require('request'),
   GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+  fs = require("fs"),
   appConfig = JSON.parse(fs.readFileSync("config.json"));
 
 var app = {};
-
-app.scope = [
-  'https://www.googleapis.com/auth/userinfo.profile',
-  'https://www.googleapis.com/auth/userinfo.email',
-  'https://www.googleapis.com/auth/tasks'
-];
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -75,7 +70,7 @@ app.get('/logout',
 app.get('/auth/google',
   passport.authenticate(
     'google',
-    { scope: app.scope }
+    { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/tasks'] }
   ),
   function(req, res){}
 );
@@ -93,8 +88,8 @@ app.get('/auth/google/callback',
 app.get('/lists',
   ensureAuthenticated,
   function(req,res) {
-    request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/?key=' + GOOGLE_APIKEY,
-      { headers: { 'Authorization' : 'Bearer ' + auth.accessToken } },
+    request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/?key=' + appConfig.api_key,
+      { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
         res.send(body);
       }
@@ -105,8 +100,8 @@ app.get('/lists',
 app.get('/lists/:id',
   ensureAuthenticated,
   function(req,res) {
-    request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + GOOGLE_APIKEY,
-      { headers: { 'Authorization' : 'Bearer ' + auth.accessToken } },
+    request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
+      { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
         res.send(body);
       }
