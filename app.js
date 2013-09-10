@@ -6,6 +6,7 @@ var express = require('express')
 
 var GOOGLE_CLIENT_ID = "326728887060.apps.googleusercontent.com";
 var GOOGLE_CLIENT_SECRET = "FlzbXjKBdCxWXVbT13Cs4try";
+var GOOGLE_APIKEY = "AIzaSyAE7l2KGB7afn3TKuSRsG87k8SSAlDBSgA";
 var auth = {};
 
 passport.serializeUser(function(user, done) {
@@ -81,7 +82,7 @@ app.get('/auth/google/callback',
   });
 
 app.get('/lists', ensureAuthenticated, function(req,res){
-  request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/?key=AIzaSyAE7l2KGB7afn3TKuSRsG87k8SSAlDBSgA', {
+  request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/?key=' + GOOGLE_APIKEY, {
   headers: { 'Authorization' : 'Bearer ' + auth.accessToken }
   }, function(error, response, body){
     res.send(body);
@@ -89,7 +90,7 @@ app.get('/lists', ensureAuthenticated, function(req,res){
 });
 
 app.get('/lists/:id', ensureAuthenticated, function(req,res){
-  request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=AIzaSyAE7l2KGB7afn3TKuSRsG87k8SSAlDBSgA', {
+  request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + GOOGLE_APIKEY, {
   headers: { 'Authorization' : 'Bearer ' + auth.accessToken }
   }, function(error, response, body){
     res.send(body);
