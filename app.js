@@ -88,6 +88,14 @@ app.get('/lists', ensureAuthenticated, function(req,res){
   });
 });
 
+app.get('/lists/:id', ensureAuthenticated, function(req,res){
+  request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=AIzaSyAE7l2KGB7afn3TKuSRsG87k8SSAlDBSgA', {
+  headers: { 'Authorization' : 'Bearer ' + auth.accessToken }
+  }, function(error, response, body){
+    res.send(body);
+  });
+})
+
 var port = process.env.PORT || 1234;
 
 app.listen(port, function() {
