@@ -18,6 +18,6 @@ require.config({
   }
 });
 
-require(['src/views/app'], function(AppView){
+require(['src/views/view.app'], function(AppView){
   new AppView();
 });
