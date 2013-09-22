@@ -1,0 +1,15 @@
+doctype 5
+html(lang="en")
+  head
+    title Gtasks
+  body
+
+    h2 Hello #{user.displayName}
+
+    #lists
+
+    script(type='text/template', id="list-template").
+      <h2><%= title %></h2>
+      <p><%= updated %></p>
+
+    script(data-main='js/main.js', src='js/vendor/requirejs/require.js')

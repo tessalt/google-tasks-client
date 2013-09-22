@@ -1,7 +1,7 @@
 define(['backbone', 'underscore', 'jquery'], function(backbone, _, $){
 
   var ListView = Backbone.View.extend({
-    template: _.template("<h2><%= title %></h2><p><%= updated %></p>"),
+    template: _.template($("#list-template").html()),
     initialize: function(){
       this.render();
     },
