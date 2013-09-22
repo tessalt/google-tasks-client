@@ -10,9 +10,9 @@
 	<h2>Hello, <%= user.displayName %>.</h2>
 <% } %>
 
-<script src="js/vendor/jquery/jquery.js"></script>
 <script>
   var CURRENTUSER = <%= user.id %>;
 </script>
+<script data-main="js/main.js" src="js/vendor/requirejs/require.js"></script>
 </body>
 </html>

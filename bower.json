@@ -1,0 +1,21 @@
+{
+  "name": "gtasks",
+  "version": "0.0.0",
+  "authors": [
+    "Tessa Thornton <tessathornton@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone-amd": "~1.0.0",
+    "jquery": "~2.0.3",
+    "requirejs": "~2.1.8",
+    "underscore-amd": "~1.5.2"
+  }
+}
