@@ -3,8 +3,8 @@ var express = require('express')
   util = require('util'),
   request = require('request'),
   GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-  fs = require("fs"),
-  appConfig = JSON.parse(fs.readFileSync("config.json"));
+  fs = require('fs'),
+  appConfig = JSON.parse(fs.readFileSync('config.json'));
 
 var app = {};
 
@@ -20,7 +20,7 @@ passport.use(new GoogleStrategy(
   {
     clientID: appConfig.client_id,
     clientSecret: appConfig.client_secret,
-    callbackURL: "http://127.0.0.1:1234/auth/google/callback"
+    callbackURL: 'http://127.0.0.1:1234/auth/google/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     app.accessToken = accessToken;
@@ -104,7 +104,7 @@ app.get('/lists/:id',
       'https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
-        res.render("list", {body: body});
+        res.render('list', {body: body});
       }
     );
   }
@@ -157,7 +157,7 @@ app.del('/lists/:id',
 var port = process.env.PORT || 1234;
 
 app.listen(port, function() {
-  console.log("Listening on " + port);
+  console.log('Listening on ' + port);
 });
 
 function ensureAuthenticated(req, res, next) {

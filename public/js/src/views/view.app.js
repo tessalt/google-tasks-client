@@ -2,10 +2,10 @@ define(['backbone', 'src/collections/collection.lists', 'src/views/view.list'], 
 
   var AppView = Backbone.View.extend ({
 
-    el: "#lists",
+    el: '#lists',
 
     events: {
-      "click .create-list" : "newList"
+      'click .create-list' : 'newList'
     },
 
     initialize: function() {
@@ -15,17 +15,17 @@ define(['backbone', 'src/collections/collection.lists', 'src/views/view.list'], 
     },
 
     addAll: function() {
-      this.$el.find("ul").html('');
+      this.$el.find('ul').html('');
       Lists.each(this.addOne, this);
     },
 
     addOne: function(list){
       var view = new ListView({model: list});
-      this.$el.find("ul").append(view.render().el);
+      this.$el.find('ul').append(view.render().el);
     },
 
     newList: function(e) {
-      var attribute = this.$el.find(".create-list-title").val().trim();
+      var attribute = this.$el.find('.create-list-title').val().trim();
       Lists.create({title: attribute});
     }
 
