@@ -11,6 +11,7 @@ define(['backbone', 'underscore', 'jquery', 'collections/lists', 'views/list'], 
     },
 
     addAll: function() {
+      this.$el.html('');
       Lists.each(this.addOne, this);
     },
 

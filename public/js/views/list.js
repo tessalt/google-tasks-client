@@ -4,12 +4,14 @@ define(['backbone', 'underscore', 'jquery'], function(backbone, _, $){
     template: _.template($("#list-template").html()),
 
      events: {
-      "click .destroy" : "destroy"
+      "click .destroy" : "destroy",
+      "click .update" : "update"
     },
 
     initialize: function(){
       this.render();
       this.listenTo(this.model, 'destroy', this.remove);
+      this.listenTo(this.model, 'change', this.render);
     },
 
     render: function() {
@@ -26,6 +28,13 @@ define(['backbone', 'underscore', 'jquery'], function(backbone, _, $){
           console.log(response);
         }
       });
+    },
+
+    update: function() {
+      var inputValue = this.$el.find("input").val().trim();
+      if (inputValue) {
+        this.model.save({ title: inputValue });
+      }
     }
 
   });

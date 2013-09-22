@@ -9,9 +9,9 @@ html(lang="en")
     #lists
 
     script(type='text/template', id="list-template").
-      <h2><%= title %></h2>
+      <input type="text" value="<%=title %>">
       <p><%= updated %></p>
-      <small><%= id %></small>
       <a class="destroy">Delete</a>
+      <a class="update">Update</a>
 
     script(data-main='js/main.js', src='js/vendor/requirejs/require.js')
