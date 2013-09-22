@@ -130,12 +130,12 @@ app.put('/lists/:id',
   ensureAuthenticated,
   function(req,res) {
     request({
-        method: 'PUT',
+        method: 'PATCH',
         uri:'https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
         headers:{'Authorization' : 'Bearer ' + app.accessToken},
         json: req.body
       }, function (error, response, body) {
-        console.log(error);
+        console.log(response.status);
       }
     )
   }
