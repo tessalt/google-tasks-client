@@ -1,6 +1,8 @@
-define(['backbone', 'underscore', 'jquery', 'collections/lists'], function(Backbone, _, $, Lists){
+define(['backbone', 'underscore', 'jquery', 'collections/lists', 'views/list'], function(Backbone, _, $, Lists, ListView){
 
   var AppView = Backbone.View.extend ({
+
+    el: "#lists",
 
     initialize: function() {
       Lists.fetch({reset: 'true'});
@@ -12,7 +14,8 @@ define(['backbone', 'underscore', 'jquery', 'collections/lists'], function(Backb
     },
 
     showList: function(list) {
-      console.log(list.toJSON());
+      var view = new ListView({model: list});
+      this.$el.append(view.render().el);
     }
 
   });
