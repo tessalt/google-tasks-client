@@ -91,7 +91,7 @@ app.get('/lists',
     request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
-        res.send(body);
+        res.render("list", {body: body});
       }
     );
   }
@@ -100,12 +100,30 @@ app.get('/lists',
 app.get('/lists/:id',
   ensureAuthenticated,
   function(req,res) {
-    request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
+    request.get('https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
-        res.send(body);
+        res.render("list", {body: body});
       }
     );
+  }
+);
+
+app.post('/lists',
+  ensureAuthenticated,
+  function(req,res) {
+    tasklist = {
+      'title': 'WHIPPIT'
+    };
+    request({
+        method: 'POST',
+        uri:'https://www.googleapis.com/tasks/v1/users/@me/lists/?key=' + appConfig.api_key,
+        headers:{'Authorization' : 'Bearer ' + app.accessToken},
+        json: tasklist
+      }, function (error, response, body) {
+        console.log(body)
+      }
+    )
   }
 );
 
