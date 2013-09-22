@@ -23,14 +23,7 @@ define(['backbone', 'underscore', 'jquery'], function(backbone, _, $){
     },
 
     destroy: function() {
-      this.model.destroy({
-        success: function(model, response){
-          console.log(response);
-        },
-        error: function(model, response){
-          console.log(response);
-        }
-      });
+      this.model.destroy();
     },
 
     update: function() {
