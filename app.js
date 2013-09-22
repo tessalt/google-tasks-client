@@ -100,7 +100,8 @@ app.get('/lists',
 app.get('/lists/:id',
   ensureAuthenticated,
   function(req,res) {
-    request.get('https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
+    request.get(
+      'https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
         res.render("list", {body: body});
@@ -122,6 +123,19 @@ app.post('/lists',
         console.log(body)
       }
     )
+  }
+);
+
+app.del('/lists/:id',
+  ensureAuthenticated,
+  function(req,res) {
+    request.del(
+      'https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
+      { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
+      function(error, response, body){
+        console.log(response);
+      }
+    );
   }
 );
 
