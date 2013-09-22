@@ -92,6 +92,7 @@ app.get('/lists',
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
         res.render("list", {body: body});
+        console.log(response.body);
       }
     );
   }
