@@ -91,8 +91,8 @@ app.get('/lists',
     request.get(' https://www.googleapis.com/tasks/v1/users/@me/lists/?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
-        res.render("list", {body: body});
-        console.log(response.statusCode);
+        res.send(body);
+        console.log(response.body);
       }
     );
   }
