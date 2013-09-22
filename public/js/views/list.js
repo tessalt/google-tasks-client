@@ -9,6 +9,7 @@ define(['backbone', 'underscore', 'jquery'], function(backbone, _, $){
 
     initialize: function(){
       this.render();
+      this.listenTo(this.model, 'destroy', this.remove);
     },
 
     render: function() {
