@@ -1,4 +1,4 @@
-define(['backbone', 'underscore', 'jquery'], function(backbone, _, $){
+define(['backbone'], function(Backbone){
 
   var ListView = Backbone.View.extend({
 
