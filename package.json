@@ -3,15 +3,14 @@
   "version": "0.0.0",
   "dependencies": {
     "express": ">= 0.0.0",
-    "ejs": ">= 0.0.0",
     "passport": ">= 0.0.0",
+    "jade": "~0.35.0",
     "request": "~2.21.0",
     "passport-google-oauth": ">= 0.0.0",
     "passport-http-bearer": "~1.0.1"
   },
   "devDependencies": {
     "supertest": "~0.8.0",
-    "chai": "~1.8.0",
-    "jade": "~0.35.0"
+    "chai": "~1.8.0"
   }
 }
