@@ -112,14 +112,12 @@ app.get('/lists/:id',
 app.post('/lists',
   ensureAuthenticated,
   function(req,res) {
-    tasklist = {
-      'title': 'WHIPPIT'
-    };
+    console.log(req.body);
     request({
         method: 'POST',
         uri:'https://www.googleapis.com/tasks/v1/users/@me/lists/?key=' + appConfig.api_key,
         headers:{'Authorization' : 'Bearer ' + app.accessToken},
-        json: tasklist
+        json: req.body
       }, function (error, response, body) {
         console.log(body)
       }
