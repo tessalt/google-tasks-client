@@ -8,10 +8,14 @@ html(lang="en")
 
     #lists
 
+      input(type="text", name="title", class='create-list-title')
+      button.create-list Create New
+
+      ul
+
     script(type='text/template', id="list-template").
       <input type="text" value="<%=title %>">
-      <p><%= updated %></p>
-      <a class="destroy">Delete</a>
-      <a class="update">Update</a>
+      <button class="destroy">Delete</button>
+      <button class="update">Update</button>
 
     script(data-main='js/main.js', src='js/vendor/requirejs/require.js')

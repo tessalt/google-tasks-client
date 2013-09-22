@@ -4,6 +4,10 @@ define(['backbone', 'underscore', 'jquery', 'collections/lists', 'views/list'], 
 
     el: "#lists",
 
+    events: {
+      "click .create-list" : "newList"
+    },
+
     initialize: function() {
       Lists.fetch({reset: 'true'});
       this.listenTo(Lists, 'reset', this.addAll);
@@ -11,13 +15,18 @@ define(['backbone', 'underscore', 'jquery', 'collections/lists', 'views/list'], 
     },
 
     addAll: function() {
-      this.$el.html('');
+      this.$el.find("ul").html('');
       Lists.each(this.addOne, this);
     },
 
     addOne: function(list){
       var view = new ListView({model: list});
-      this.$el.append(view.render().el);
+      this.$el.find("ul").append(view.render().el);
+    },
+
+    newList: function(e) {
+      var attribute = this.$el.find(".create-list-title").val().trim();
+      Lists.create({title: attribute});
     }
 
   });
