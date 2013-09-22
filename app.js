@@ -126,6 +126,21 @@ app.post('/lists',
   }
 );
 
+app.put('/lists/:id',
+  ensureAuthenticated,
+  function(req,res) {
+    request({
+        method: 'PUT',
+        uri:'https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
+        headers:{'Authorization' : 'Bearer ' + app.accessToken},
+        json: req.body
+      }, function (error, response, body) {
+        console.log(error);
+      }
+    )
+  }
+);
+
 app.del('/lists/:id',
   ensureAuthenticated,
   function(req,res) {
