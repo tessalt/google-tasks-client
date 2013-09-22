@@ -1,4 +1,4 @@
-define(['backbone', 'collections/lists', 'views/list'], function(Backbone, Lists, ListView){
+define(['backbone', 'src/collections/lists', 'src/views/list'], function(Backbone, Lists, ListView){
 
   var AppView = Backbone.View.extend ({
 
