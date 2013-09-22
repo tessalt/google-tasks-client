@@ -16,6 +16,9 @@
     "backbone-amd": "~1.0.0",
     "jquery": "~2.0.3",
     "requirejs": "~2.1.8",
-    "underscore-amd": "~1.5.2"
+    "underscore-amd": "~1.5.2",
+    "mocha": "~1.13.0",
+    "chai": "~1.8.0",
+    "sinon": "~1.7.3"
   }
 }

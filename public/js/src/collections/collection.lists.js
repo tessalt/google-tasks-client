@@ -1,4 +1,4 @@
-define(['backbone', 'src/models/model.list'], function(Backbone, ListModel){
+define(['backbone', 'listmodel'], function(Backbone, ListModel){
 
   var Lists = Backbone.Collection.extend ({
     model: ListModel,
