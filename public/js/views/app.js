@@ -7,6 +7,7 @@ define(['backbone', 'underscore', 'jquery', 'collections/lists', 'views/list'], 
     initialize: function() {
       Lists.fetch({reset: 'true'});
       this.listenTo(Lists, 'reset', this.render);
+      this.listenTo(Lists, 'add', this.render);
     },
 
     render: function() {
@@ -16,7 +17,7 @@ define(['backbone', 'underscore', 'jquery', 'collections/lists', 'views/list'], 
     showList: function(list) {
       var view = new ListView({model: list});
       this.$el.append(view.render().el);
-    }
+    },
 
   });
 

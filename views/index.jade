@@ -11,5 +11,7 @@ html(lang="en")
     script(type='text/template', id="list-template").
       <h2><%= title %></h2>
       <p><%= updated %></p>
+      <small><%= id %></small>
+      <a class="destroy">Delete</a>
 
     script(data-main='js/main.js', src='js/vendor/requirejs/require.js')
