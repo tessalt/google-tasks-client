@@ -152,7 +152,7 @@ app.del('/lists/:id',
       'https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
-        console.log(body);
+        console.log(response.statusCode);
       }
     );
   }

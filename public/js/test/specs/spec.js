@@ -5,13 +5,13 @@ define(['chai', 'listmodel', 'listcollection'], function(chai, ListModel, ListCo
   describe('List Model', function() {
 
     it('should be a function', function(done) {
-      (ListModel).should.be.a('function');
+      expect(ListModel).to.be.a('function');
       done();
     });
 
     it('should create a new model', function(done){
       var testList = new ListModel({title: "Test List"});
-      testList.get('title').should.equal("Test List");
+      expect(testList.get('title')).to.equal("Test List");
       done();
     });
 
@@ -27,18 +27,18 @@ define(['chai', 'listmodel', 'listcollection'], function(chai, ListModel, ListCo
     });
 
     it('should be an object', function(done){
-      ListCollection.should.be.a('object');
+      expect(ListCollection).to.be.a('object');
       done();
     });
 
     it('should have at least one model', function(done){
-      ListCollection.models.length.should.be.at.least(1);
+      expect(ListCollection.length).to.be.at.least(1);
       done();
     });
 
     it('should accept new models', function(done){
       ListCollection.create({title: "Collections Test", id: 99});
-      ListCollection.get(99).get('title').should.equal('Collections Test');
+      expect(ListCollection.get(99).get('title')).to.equal('Collections Test');
       ListCollection.get(99).destroy();
       done();
     });
