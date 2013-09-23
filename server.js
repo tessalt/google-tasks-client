@@ -108,7 +108,7 @@ app.get('/lists/:id',
       'https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
-        res.render('list', {body: body});
+        res.send(body);
       }
     );
   }
@@ -153,6 +153,19 @@ app.del('/lists/:id',
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
         console.log(response.statusCode);
+      }
+    );
+  }
+);
+
+app.get('/lists/:id/tasks',
+  ensureAuthenticated,
+  function(req, res) {
+    request.get(
+      'https://www.googleapis.com/tasks/v1/lists/' + req.params.id + '/tasks' + '?key=' + appConfig.api_key,
+      { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
+      function(error, response, body){
+        res.send(body);
       }
     );
   }
