@@ -10,8 +10,8 @@ define(['chai', 'listmodel', 'listcollection'], function(chai, ListModel, ListCo
     });
 
     it('should create a new model', function(done){
-      var testList = new ListModel({title: "Test List"});
-      expect(testList.get('title')).to.equal("Test List");
+      var testList = new ListModel({title: 'Test List'});
+      expect(testList.get('title')).to.equal('Test List');
       done();
     });
 
@@ -37,19 +37,29 @@ define(['chai', 'listmodel', 'listcollection'], function(chai, ListModel, ListCo
     });
 
     it('should accept new models', function(done){
-      ListCollection.create({title: "Collections Test", id: 99});
+      ListCollection.create({title: 'Collections Test', id: 99});
       expect(ListCollection.get(99).get('title')).to.equal('Collections Test');
       ListCollection.get(99).destroy();
       done();
     });
 
     it('should destroy models', function(done){
-      ListCollection.create({title: "Collections Test Destroy", id: 100});
+      ListCollection.create({title: 'Collections Test Destroy', id: 100});
       ListCollection.get(100).destroy();
       var newList = ListCollection.get(100);
       expect(newList).to.be.undefined;
       done();
-    })
+    });
+
+    it('should update models', function(done){
+      ListCollection.create({title: 'To edit', id: 101});
+      var newList = ListCollection.get(101);
+      newList.save({title: 'Edited'}).always(function(){
+        expect(newList.get('title')).to.equal('Edited');
+      });
+      newList.destroy();
+      done();
+    });
 
   });
 
