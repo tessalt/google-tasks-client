@@ -14,7 +14,7 @@ html(lang="en")
       .list
 
     script(type='text/template', id="list-template").
-      <input type="text" value="<%=title %>">
+      <input type="text" value="<%=title %>" class="update-list-title">
       <button class="destroy">Delete</button>
       <button class="update">Update</button>
       <ul></ul>
@@ -23,7 +23,8 @@ html(lang="en")
       <hr />
 
     script(type='text/template', id='task-template').
-      <%= title %>
+      <input type="text" value="<%= title %>" class="update-task-title">
       <button class="destroy-task">Delete</button>
+      <button class="update-task">Update</button>
 
     script(data-main='js/setup', src='js/vendor/requirejs/require.js')

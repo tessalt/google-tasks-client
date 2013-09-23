@@ -200,6 +200,21 @@ app.post('/lists/:id/tasks',
   }
 );
 
+app.put('/lists/:id/tasks/:taskid',
+  ensureAuthenticated,
+  function(req,res) {
+    request({
+        method: 'PATCH',
+        uri:'https://www.googleapis.com/tasks/v1/lists/' + req.params.id + '/tasks/' + req.params.taskid + '?key=' + appConfig.api_key,
+        headers:{'Authorization' : 'Bearer ' + app.accessToken},
+        json: req.body
+      }, function (error, response, body) {
+        console.log(response.statusCode);
+      }
+    )
+  }
+);
+
 app.del('/lists/:id/tasks/:taskid',
   ensureAuthenticated,
   function(req,res) {

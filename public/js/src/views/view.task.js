@@ -7,7 +7,8 @@ define(['backbone', 'taskcollection'], function(Backbone, TaskCollection){
     template: _.template($("#task-template").html()),
 
     events: {
-      'click .destroy-task' : 'destroy'
+      'click .destroy-task' : 'destroy',
+      'click .update-task' : 'update'
     },
 
     initialize: function() {
@@ -22,6 +23,13 @@ define(['backbone', 'taskcollection'], function(Backbone, TaskCollection){
 
     destroy: function() {
       this.model.destroy();
+    },
+
+    update: function() {
+      var inputValue = this.$el.find('.update-task-title').val().trim();
+      if (inputValue) {
+        this.model.save({ title: inputValue });
+      }
     }
 
   });

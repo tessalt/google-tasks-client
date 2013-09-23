@@ -31,7 +31,7 @@ define(['backbone', 'taskcollection', 'taskview'], function(Backbone, TaskCollec
     },
 
     update: function() {
-      var inputValue = this.$el.find('input').val().trim();
+      var inputValue = this.$el.find('.update-list-title').val().trim();
       if (inputValue) {
         this.model.save({ title: inputValue });
       }
