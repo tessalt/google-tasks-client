@@ -21,6 +21,9 @@ define(['backbone', 'taskcollection', 'taskview'], function(Backbone, TaskCollec
       this.listenTo(this.model.tasks, 'add', this.addOneTask);
       this.listenTo(this.model.tasks, 'reset', this.addAllTasks);
       this.model.tasks.fetch({reset: 'true'});
+      this.listenTo(this.model.tasks, 'all', function(eventName){
+        console.log("Tasks " + eventName);
+      });
     },
 
     render: function() {

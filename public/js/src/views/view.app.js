@@ -13,6 +13,9 @@ define(['backbone', 'listcollection', 'listview'], function(Backbone, Lists, Lis
       Lists.fetch({reset: 'true'});
       this.listenTo(Lists, 'reset', this.addAll);
       this.listenTo(Lists, 'add', this.addOne);
+      this.listenTo(Lists, 'all', function(eventName){
+        console.log("Lists " + eventName);
+      })
     },
 
     addAll: function() {
