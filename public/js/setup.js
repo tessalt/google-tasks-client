@@ -5,8 +5,11 @@ require.config({
     'underscore' : 'vendor/underscore-amd/underscore',
     'appview'    : 'src/views/view.app',
     'listview'   : 'src/views/view.list',
+    'taskview'   : 'src/views/view.task',
     'listcollection' : 'src/collections/collection.lists',
-    'listmodel' : 'src/models/model.list'
+    'taskcollection' : 'src/collections/collection.tasks',
+    'listmodel' : 'src/models/model.list',
+    'taskmodel' : 'src/models/model.task'
   },
   shim: {
     jquery: {

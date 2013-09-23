@@ -1,8 +1,8 @@
-define(['backbone'], function(Backbone){
+define(['backbone', 'taskcollection', 'taskview'], function(Backbone, TaskCollection, TaskView){
 
   var ListView = Backbone.View.extend({
 
-    tagName: 'li',
+    tagName: 'p',
 
     template: _.template($('#list-template').html()),
 
@@ -15,6 +15,8 @@ define(['backbone'], function(Backbone){
       this.render();
       this.listenTo(this.model, 'destroy', this.remove);
       this.listenTo(this.model, 'change', this.render);
+      this.listenTo(this.model.tasks, 'reset', this.addAllTasks);
+      this.model.tasks.fetch({reset: 'true'});
     },
 
     render: function() {
@@ -31,6 +33,15 @@ define(['backbone'], function(Backbone){
       if (inputValue) {
         this.model.save({ title: inputValue });
       }
+    },
+
+    addAllTasks: function() {
+      this.model.tasks.each(this.addOneTask, this);
+    },
+
+    addOneTask: function(task) {
+      var view = new TaskView({model: task});
+      this.$el.find('ul').append(view.render().el);
     }
 
   });

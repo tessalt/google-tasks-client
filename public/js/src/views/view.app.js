@@ -16,13 +16,13 @@ define(['backbone', 'listcollection', 'listview'], function(Backbone, Lists, Lis
     },
 
     addAll: function() {
-      this.$el.find('ul').html('');
+      this.$el.find('.list').html('');
       Lists.each(this.addOne, this);
     },
 
     addOne: function(list){
       var view = new ListView({model: list});
-      this.$el.find('ul').append(view.render().el);
+      this.$el.find('.list').append(view.render().el);
     },
 
     newList: function(e) {

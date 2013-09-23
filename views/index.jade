@@ -11,11 +11,15 @@ html(lang="en")
       input(type="text", name="title", class='create-list-title')
       button.create-list Create New
 
-      ul
+      .list
 
     script(type='text/template', id="list-template").
       <input type="text" value="<%=title %>">
       <button class="destroy">Delete</button>
       <button class="update">Update</button>
+      <ul></ul>
+
+    script(type='text/template', id='task-template').
+      <%= title %>
 
     script(data-main='js/setup', src='js/vendor/requirejs/require.js')
