@@ -85,6 +85,10 @@ app.get('/auth/google/callback',
   }
 );
 
+app.get('/tests', ensureAuthenticated, function(req, res){
+  res.sendfile('public/js/test/runner.html');
+})
+
 app.get('/lists',
   ensureAuthenticated,
   function(req,res) {
