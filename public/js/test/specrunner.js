@@ -24,10 +24,11 @@ require.config({
   },
 });
 
-require(['require', 'chai', 'mocha', 'jquery'], function(require, chai){
+require(['require', 'chai', 'mocha', 'jquery'], function(require, chai) {
 
   // Chai
   var should = chai.should();
+
   /*globals mocha */
   mocha.setup('bdd');
 

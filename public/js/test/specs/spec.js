@@ -1,4 +1,6 @@
-define(['listmodel', 'listcollection'], function(ListModel, ListCollection){
+define(['chai', 'listmodel', 'listcollection'], function(chai, ListModel, ListCollection){
+
+  var expect = chai.expect;
 
   describe('List Model', function() {
 
@@ -33,6 +35,21 @@ define(['listmodel', 'listcollection'], function(ListModel, ListCollection){
       ListCollection.models.length.should.be.at.least(1);
       done();
     });
+
+    it('should accept new models', function(done){
+      ListCollection.create({title: "Collections Test", id: 99});
+      ListCollection.get(99).get('title').should.equal('Collections Test');
+      ListCollection.get(99).destroy();
+      done();
+    });
+
+    it('should destroy models', function(done){
+      ListCollection.create({title: "Collections Test Destroy", id: 100});
+      ListCollection.get(100).destroy();
+      var newList = ListCollection.get(100);
+      expect(newList).to.be.undefined;
+      done();
+    })
 
   });
 
