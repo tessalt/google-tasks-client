@@ -184,6 +184,22 @@ app.get('/lists/:id/tasks/:taskid',
   }
 );
 
+app.post('/lists/:id/tasks',
+  ensureAuthenticated,
+  function(req,res) {
+    console.log(req.body);
+    request({
+        method: 'POST',
+        uri:'https://www.googleapis.com/tasks/v1/lists/' + req.params.id + '/tasks' + '?key=' + appConfig.api_key,
+        headers:{'Authorization' : 'Bearer ' + app.accessToken},
+        json: req.body
+      }, function (error, response, body) {
+        console.log(response.statusCode);
+      }
+    )
+  }
+);
+
 app.del('/lists/:id/tasks/:taskid',
   ensureAuthenticated,
   function(req,res) {
