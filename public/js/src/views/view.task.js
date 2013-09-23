@@ -4,6 +4,8 @@ define(['backbone', 'taskcollection'], function(Backbone, TaskCollection){
 
     tagName: 'li',
 
+    className: 'row',
+
     template: _.template($("#task-template").html()),
 
     events: {

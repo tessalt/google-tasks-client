@@ -1,0 +1,35 @@
+.create-list {
+  margin-bottom: 20px;
+}
+
+.update-list {
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.invisible-field {
+  border: none;
+  box-shadow: none;
+  width: 100%;
+}
+
+.invisible-field:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom: 1px solid grey;
+}
+
+.list-tasks {
+  margin-top: 20px;
+}
+
+.list-tasks li {
+  margin-bottom: 10px;
+}
+
+.tasklist {
+  margin-bottom: 40px;
+}

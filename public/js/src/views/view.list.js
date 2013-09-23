@@ -4,6 +4,8 @@ define(['backbone', 'taskcollection', 'taskview'], function(Backbone, TaskCollec
 
     tagName: 'p',
 
+    className: 'tasklist',
+
     template: _.template($('#list-template').html()),
 
      events: {
