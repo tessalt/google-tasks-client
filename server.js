@@ -171,6 +171,19 @@ app.get('/lists/:id/tasks',
   }
 );
 
+app.get('/lists/:id/tasks/:taskid',
+  ensureAuthenticated,
+  function(req,res) {
+    request.get(
+      'https://www.googleapis.com/tasks/v1/lists/' + req.params.id + '/tasks/' + req.params.taskid + '?key=' + appConfig.api_key,
+      { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
+      function(error, response, body){
+        res.send(body);
+      }
+    );
+  }
+);
+
 var port = process.env.PORT || 1234;
 
 app.listen(port, function() {

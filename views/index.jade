@@ -9,7 +9,7 @@ html(lang="en")
     #lists
 
       input(type="text", name="title", class='create-list-title')
-      button.create-list Create New
+      button.create-list Create List
 
       .list
 
@@ -18,8 +18,12 @@ html(lang="en")
       <button class="destroy">Delete</button>
       <button class="update">Update</button>
       <ul></ul>
+      <input type="text" class="create-task-title">
+      <button class="create-task">Create Task</button>
+      <hr />
 
     script(type='text/template', id='task-template').
       <%= title %>
+      <button class="destroy-task">Delete</button>
 
     script(data-main='js/setup', src='js/vendor/requirejs/require.js')
