@@ -9,6 +9,7 @@ define(['backbone', 'listcollection', 'listview'], function(Backbone, Lists, Lis
     },
 
     initialize: function() {
+      this.$create = this.$el.find('.create-list-title');
       Lists.fetch({reset: 'true'});
       this.listenTo(Lists, 'reset', this.addAll);
       this.listenTo(Lists, 'add', this.addOne);
@@ -25,8 +26,11 @@ define(['backbone', 'listcollection', 'listview'], function(Backbone, Lists, Lis
     },
 
     newList: function(e) {
-      var attribute = this.$el.find('.create-list-title').val().trim();
-      Lists.create({title: attribute});
+      var attribute = this.$create.val().trim();
+      if (attribute.length > 0) {
+        Lists.create({title: attribute});
+        this.$create.val('');
+      }
     }
 
   });
