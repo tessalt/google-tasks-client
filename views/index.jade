@@ -2,52 +2,10 @@ doctype 5
 html(lang="en")
   head
     title Gtasks
-    link(href="js/vendor/bootstrap/dist/css/bootstrap.css", rel="stylesheet")
-    link(href="css/main.css", rel="stylesheet")
+    script(src='js/vendor/platform/platform.js')
+    link(rel='import', href='js/vendor/polymer-ajax/polymer-ajax.html')
   body
 
-    .container
+    polymer-ajax(url="http://example.com/json", handleAs="json")
 
-      .page-header
-        h1 Welcome
-          small  #{user.displayName}
-
-      #lists
-        form.row.create-list
-          .col-md-10
-            input(type="text", name="title", class='create-list-title form-control')
-          .col-md-2
-            button.create-list.btn.btn-primary Create List
-
-        .list
-
-      script(type='text/template', id="list-template").
-        <div class="row update-list">
-          <div class="col-md-4">
-            <h2><input type="text" value="<%=title %>" class="update-list-title invisible-field"></h2>
-          </div>
-          <div class="col-md-2">
-            <button class="destroy btn btn-danger btn-sm">Delete</button>
-            <button class="update btn btn-info btn-sm">Update</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <input type="text" class="create-task-title form-control">
-          </div>
-          <div class="col-md-2">
-            <button class="create-task btn btn-primary">Create Task</button>
-          </div>
-        </div>
-        <ul class="list-tasks list-unstyled"></ul>
-
-      script(type='text/template', id='task-template').
-        <div class="col-md-4">
-          <input type="text" value="<%= title %>" class="update-task-title invisible-field">
-        </div>
-        <div class="col-md-2">
-          <button class="destroy-task btn btn-danger btn-sm">Delete</button>
-          <button class="update-task btn btn-info btn-sm">Update</button>
-        </div>
-
-      script(data-main='js/setup', src='js/vendor/requirejs/require.js')
+    script(src='js/main.js')

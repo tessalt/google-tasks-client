@@ -1,25 +1,25 @@
 {
   "name": "gtasks",
   "version": "0.0.0",
+  "homepage": "https://github.com/tessalt/google-tasks-client",
   "authors": [
     "Tessa Thornton <tessathornton@gmail.com>"
   ],
+  "moduleType": [
+    "amd"
+  ],
   "license": "MIT",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
+    "public/js/vendor",
     "test",
     "tests"
   ],
   "dependencies": {
-    "backbone-amd": "~1.0.0",
-    "jquery": "~2.0.3",
-    "requirejs": "~2.1.8",
-    "underscore-amd": "~1.5.2",
-    "mocha": "~1.13.0",
-    "chai": "~1.8.0",
-    "sinon": "~1.7.3",
-    "bootstrap": "~3.0.0"
+    "polymer-ajax": "Polymer/polymer-ajax#~0.2.3",
+    "polymer": "~0.2.3"
   }
 }
