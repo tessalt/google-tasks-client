@@ -29,6 +29,7 @@ define(['backbone', 'listcollection', 'listview'], function(Backbone, Lists, Lis
     },
 
     newList: function(e) {
+      e.preventDefault();
       var attribute = this.$create.val().trim();
       if (attribute.length > 0) {
         Lists.create({title: attribute});
