@@ -3,9 +3,10 @@ html(lang="en")
   head
     title Gtasks
     script(src='js/vendor/platform/platform.js')
-    link(rel='import', href='js/vendor/polymer-ajax/polymer-ajax.html')
+    script(src='js/vendor/jquery/dist/jquery.js')
+    link(rel='import', href='js/elements/gt-model.html')
   body
 
-    polymer-ajax(url="http://example.com/json", handleAs="json")
+    //- polymer-ajax(url='/lists', body="{'foo':1, 'bar':2}", handleAs='json', method='POST', response='{{ response }}', on-polymer-response='{{ handleResponse }}')
 
-    script(src='js/main.js')
+    gt-model

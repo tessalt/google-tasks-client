@@ -1,0 +1,42 @@
+<link rel="import" href="../vendor/polymer/polymer.html">
+<link rel="import" href="../vendor/polymer-ajax/polymer-ajax.html">
+
+<polymer-element name="gt-model" attributes="">
+  <template>
+
+  </template>
+  <script>
+
+    Polymer('gt-model', {
+
+      create: function(title, callback) {
+        var title = title || '';
+        var callback = callback || function() {};
+        var newItem = {
+          title: title
+        }
+        return newItem;
+      },
+
+      save: function(item) {
+        var callback = callback || function() {};
+        $.ajax({
+          type:"POST",
+          dataType: 'json',
+          contentType: "application/json",
+          url: '/lists',
+          data: JSON.stringify(item),
+          success: function(response){
+            console.log(response);
+          }
+        });
+      },
+
+      ready: function() {
+        var model = this.create('testing from app');
+        this.save(model);
+      }
+
+    });
+  </script>
+</polymer-element>

@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "polymer-ajax": "Polymer/polymer-ajax#~0.2.3",
-    "polymer": "~0.2.3"
+    "polymer": "~0.2.3",
+    "jquery": "~2.1.1"
   }
 }

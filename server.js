@@ -124,7 +124,7 @@ app.post('/lists',
         headers:{'Authorization' : 'Bearer ' + app.accessToken},
         json: req.body
       }, function (error, response, body) {
-        console.log(response.statusCode);
+        res.send(response.statusCode);
       }
     )
   }
