@@ -1,0 +1,14 @@
+<link rel="import" href="../vendor/polymer/polymer.html">
+
+<polymer-element name="gt-index">
+  <template>
+    <template repeat="{{ thing in model.items }}">
+      <li>{{ thing.title }}</li>
+    </template>
+  </template>
+  <script>
+    Polymer('gt-index', {
+      model: document.querySelector('gt-model')
+    });
+  </script>
+</polymer-element>
