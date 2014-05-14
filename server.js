@@ -50,13 +50,13 @@ app.configure(function() {
 app.get('/',
   ensureAuthenticated,
   function(req, res){
-    res.render('index', { user: req.user });
+    res.sendfile('views/index.html');
   }
 );
 
 app.get('/login',
   function(req, res){
-    res.render('login', { user: req.user });
+    res.sendfile('views/login.html');
   }
 );
 

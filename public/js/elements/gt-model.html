@@ -5,17 +5,15 @@
 
     Polymer('gt-model', {
 
-      create: function(title, callback) {
+      create: function(title) {
         var title = title || '';
-        var callback = callback || function() {};
         var newItem = {
           title: title
-        }
+        };
         return newItem;
       },
 
       save: function(item) {
-        var callback = callback || function() {};
         $.ajax({
           type:"POST",
           dataType: 'json',
@@ -26,11 +24,6 @@
             console.log(response);
           }
         });
-      },
-
-      ready: function() {
-        var model = this.create('testing from app');
-        this.save(model);
       }
 
     });

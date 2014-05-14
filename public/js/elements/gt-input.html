@@ -2,10 +2,16 @@
 
 <polymer-element name="gt-input">
   <template>
-    <input type="text" placeholder="New List">
-    <button>Create</button>
+    <input type="text" value="{{title}}" placeholder="New List">
+    <button on-click="{{commitAction}}">Create</button>
   </template>
   <script>
-    Polymer('gt-input');
+    Polymer('gt-input', {
+      model: document.querySelector('gt-model'),
+      commitAction: function() {
+        var item = this.model.create(this.title);
+        this.model.save(item);
+      }
+    });
   </script>
 </polymer-element>
