@@ -1,13 +1,47 @@
 <link rel="import" href="../vendor/polymer/polymer.html">
 
 <polymer-element name="gt-item" attributes="item">
+  <style>
+    .gt-item-show {
+      display: block;
+    }
+    .gt-item-hide {
+      display: none;
+    }
+  </style>
   <template>
-    <li>{{ item.title }} <button on-click="{{deleteItem}}" item="/lists/{{item.id}}">delete</button></li>
+    <li>
+      <span id="gtItemTitle">{{ item.title }}</span>
+      <input id="gtItemInput" class="gt-item-hide" type="text" value="{{item.title}}">
+      <button id="gtItemEdit" on-click="{{editItem}}">Edit</button>
+      <button id="gtItemUpdate" class="gt-item-hide" on-click="{{updateItem}}">Update</button>
+      <button on-click="{{deleteItem}}">Delete</button>
+    </li>
   </template>
   <script>
     Polymer('gt-item', {
       model: document.querySelector('gt-model'),
-      deleteItem: function(e) {
+      editItem: function() {
+        this.$.gtItemTitle.classList.add('gt-item-hide');
+        this.$.gtItemInput.classList.remove('gt-item-hide');
+        this.$.gtItemInput.focus();
+        this.$.gtItemEdit.classList.add('gt-item-hide');
+        this.$.gtItemUpdate.classList.remove('gt-item-hide');
+      },
+      updateItem: function() {
+        var _self = this;
+        $.ajax({
+          type: 'PUT',
+          url: '/lists/' + _self.item.id,
+          dataType: 'json',
+          data: { title : _self.item.title },
+          complete: function() {
+            _self.$.gtItemTitle.classList.remove('gt-item-hide');
+            _self.$.gtItemInput.classList.add('gt-item-hide');
+          }
+        });
+      },
+      deleteItem: function() {
         var _self = this;
         $.ajax({
           type: 'DELETE',

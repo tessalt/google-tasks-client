@@ -138,7 +138,8 @@ app.put('/lists/:id',
         headers:{'Authorization' : 'Bearer ' + app.accessToken},
         json: req.body
       }, function (error, response, body) {
-        console.log(response.statusCode);
+        console.log(response);
+        res.send(body);
       }
     )
   }
