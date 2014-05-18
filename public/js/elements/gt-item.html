@@ -35,7 +35,7 @@
           url: '/lists/' + _self.item.id,
           dataType: 'json',
           data: { title : _self.item.title },
-          complete: function() {
+          success: function() {
             _self.$.gtItemTitle.classList.remove('gt-item-hide');
             _self.$.gtItemInput.classList.add('gt-item-hide');
             _self.$.gtItemEdit.classList.remove('gt-item-hide');

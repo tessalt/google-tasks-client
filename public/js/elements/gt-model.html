@@ -1,10 +1,10 @@
 <link rel="import" href="../vendor/polymer/polymer.html">
 
-<polymer-element name="gt-model" attributes="items">
+<polymer-element name="gt-model" attributes="items url">
   <script>
 
     Polymer('gt-model', {
-      ready: function() {
+      domReady: function() {
         this.asyncMethod(function() {
           this.fetch(function() {
             this.items = this.items || [];
@@ -24,7 +24,7 @@
         $.ajax({
           type:"POST",
           contentType: "application/json",
-          url: '/lists',
+          url: _self.url,
           data: JSON.stringify(item),
           success: function(response, status){
             _self.items.push(item);
@@ -35,7 +35,7 @@
         var _self = this;
         $.ajax({
           type: 'GET',
-          url: '/lists',
+          url: _self.url,
           dataType: 'json',
           complete: function(response) {
             _self.items = response.responseJSON.items;

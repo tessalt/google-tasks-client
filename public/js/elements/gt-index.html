@@ -1,10 +1,10 @@
 <link rel="import" href="../vendor/polymer/polymer.html">
-<link rel="import" href="gt-item.html">
+<link rel="import" href="gt-list.html">
 
 <polymer-element name="gt-index">
   <template>
     <template repeat="{{ item in model.items }}">
-      <gt-item item="{{item}}"></gt-item>
+      <gt-list list="{{item}}"></gt-list>
     </template>
   </template>
   <script>

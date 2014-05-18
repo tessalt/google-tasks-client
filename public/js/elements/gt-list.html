@@ -1,0 +1,27 @@
+<link rel="import" href="../vendor/polymer/polymer.html">
+<link rel="import" href="gt-item.html">
+<link rel="import" href="gt-model.html">
+
+<polymer-element name="gt-list" attributes="list">
+  <template>
+    <gt-item item="{{list}}"></gt-item>
+    <div id="outer"></div>
+    <ul>
+      <template repeat="{{ item in model.items }}">
+        <gt-item item={{item}}></gt-item>
+      </template>
+    </ul>
+  </template>
+  <script>
+    Polymer('gt-list', {
+      ready: function() {
+        this.asyncMethod(function() {
+          this.model = document.createElement('gt-model');
+          this.model.items = []
+          this.model.url = '/lists/' + this.list.id + '/tasks';
+          this.$.outer.appendChild(this.model);
+        });
+      }
+    });
+  </script>
+</polymer-element>
