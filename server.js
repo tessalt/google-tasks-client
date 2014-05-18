@@ -117,7 +117,6 @@ app.get('/lists/:id',
 app.post('/lists',
   ensureAuthenticated,
   function(req,res) {
-    console.log(req.body);
     request({
         method: 'POST',
         uri:'https://www.googleapis.com/tasks/v1/users/@me/lists/?key=' + appConfig.api_key,

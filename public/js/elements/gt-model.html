@@ -6,6 +6,7 @@
     Polymer('gt-model', {
       ready: function() {
         this.asyncMethod(function() {
+          this.fetch();
           this.items = this.items || [];
         });
       },
@@ -21,12 +22,21 @@
         var _self = this;
         $.ajax({
           type:"POST",
-          dataType: 'json',
           contentType: "application/json",
           url: '/lists',
           data: JSON.stringify(item),
-          complete: function(response){
+          success: function(response, status){
             _self.items.push(item);
+          }
+        });
+      },
+      fetch: function() {
+        $.ajax({
+          type: 'GET',
+          url: '/lists',
+          dataType: 'json',
+          complete: function(response) {
+            console.log(JSON.parse(response));
           }
         });
       }
