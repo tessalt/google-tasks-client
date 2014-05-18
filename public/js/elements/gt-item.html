@@ -1,0 +1,25 @@
+<link rel="import" href="../vendor/polymer/polymer.html">
+
+<polymer-element name="gt-item" attributes="item">
+  <template>
+    <li>{{ item.title }} <button on-click="{{deleteItem}}" item="/lists/{{item.id}}">delete</button></li>
+  </template>
+  <script>
+    Polymer('gt-item', {
+      model: document.querySelector('gt-model'),
+      deleteItem: function(e) {
+        var _self = this;
+        $.ajax({
+          type: 'DELETE',
+          url: '/lists/' + _self.item.id,
+          success: function(response){
+            var i = _self.model.items.indexOf(_self.item);
+            if (i >= 0) {
+              _self.model.items.splice(i, 1);
+            }
+          }
+        });
+      }
+    });
+  </script>
+</polymer-element>

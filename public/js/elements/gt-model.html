@@ -27,6 +27,7 @@
           url: '/lists',
           data: JSON.stringify(item),
           success: function(response, status){
+            item.id = response.id;
             _self.items.push(item);
           }
         });

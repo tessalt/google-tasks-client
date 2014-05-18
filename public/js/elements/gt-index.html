@@ -1,14 +1,22 @@
 <link rel="import" href="../vendor/polymer/polymer.html">
+<link rel="import" href="gt-item.html">
 
 <polymer-element name="gt-index">
   <template>
     <template repeat="{{ item in model.items }}">
-      <li>{{ item.title }}</li>
+      <gt-item item="{{item}}"></gt-item>
     </template>
   </template>
   <script>
     Polymer('gt-index', {
-      model: document.querySelector('gt-model')
+      model: document.querySelector('gt-model'),
+      deleteItem: function(e) {
+        console.log(this.item);
+        // $.ajax({
+        //   type: 'DELETE',
+        //   url:
+        // });
+      }
     });
   </script>
 </polymer-element>

@@ -123,7 +123,7 @@ app.post('/lists',
         headers:{'Authorization' : 'Bearer ' + app.accessToken},
         json: req.body
       }, function (error, response, body) {
-        res.send(response.statusCode);
+        res.send(body);
       }
     )
   }
@@ -151,6 +151,7 @@ app.del('/lists/:id',
       'https://www.googleapis.com/tasks/v1/users/@me/lists/' + req.params.id + '/?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
+        res.send(response.statusCode);
         console.log(response.statusCode);
       }
     );
