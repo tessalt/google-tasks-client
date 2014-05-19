@@ -1,6 +1,6 @@
 <link rel="import" href="../vendor/polymer/polymer.html">
 
-<polymer-element name="gt-item" attributes="item">
+<polymer-element name="gt-item" attributes="item url model">
   <style>
     .gt-item-show {
       display: block;
@@ -20,7 +20,6 @@
   </template>
   <script>
     Polymer('gt-item', {
-      model: document.querySelector('gt-model'),
       editItem: function() {
         this.$.gtItemTitle.classList.add('gt-item-hide');
         this.$.gtItemInput.classList.remove('gt-item-hide');
@@ -30,9 +29,10 @@
       },
       updateItem: function() {
         var _self = this;
+        console.log(this.url);
         $.ajax({
           type: 'PUT',
-          url: '/lists/' + _self.item.id,
+          url: _self.url,
           dataType: 'json',
           data: { title : _self.item.title },
           success: function() {
@@ -45,9 +45,11 @@
       },
       deleteItem: function() {
         var _self = this;
+        console.log(this.model);
         $.ajax({
           type: 'DELETE',
-          url: '/lists/' + _self.item.id,
+          url: _self.url,
+          dataType: 'json',
           success: function(response){
             var i = _self.model.items.indexOf(_self.item);
             if (i >= 0) {

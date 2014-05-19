@@ -209,6 +209,7 @@ app.put('/lists/:id/tasks/:taskid',
         headers:{'Authorization' : 'Bearer ' + app.accessToken},
         json: req.body
       }, function (error, response, body) {
+        res.send(body);
         console.log(response.statusCode);
       }
     )
@@ -222,6 +223,7 @@ app.del('/lists/:id/tasks/:taskid',
       'https://www.googleapis.com/tasks/v1/lists/' + req.params.id + '/tasks/' + req.params.taskid + '?key=' + appConfig.api_key,
       { headers: { 'Authorization' : 'Bearer ' + app.accessToken } },
       function(error, response, body){
+        res.send('deleted');
         console.log(response.statusCode);
       }
     );

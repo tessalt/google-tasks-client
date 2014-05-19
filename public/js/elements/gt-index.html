@@ -4,12 +4,12 @@
 <polymer-element name="gt-index">
   <template>
     <template repeat="{{ item in model.items }}">
-      <gt-list list="{{item}}"></gt-list>
+      <gt-list list="{{item}}" url="/lists/{{item.id}}" model="{{model}}"></gt-list>
     </template>
   </template>
   <script>
     Polymer('gt-index', {
-      model: document.querySelector('gt-model')
+      model: document.getElementById('lists')
     });
   </script>
 </polymer-element>

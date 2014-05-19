@@ -2,13 +2,13 @@
 <link rel="import" href="gt-item.html">
 <link rel="import" href="gt-model.html">
 
-<polymer-element name="gt-list" attributes="list">
+<polymer-element name="gt-list" attributes="list url model">
   <template>
-    <gt-item item="{{list}}"></gt-item>
+    <gt-item item="{{list}}" url="{{url}}" model="{{model}}"></gt-item>
     <div id="outer"></div>
     <ul>
-      <template repeat="{{ item in model.items }}">
-        <gt-item item={{item}}></gt-item>
+      <template repeat="{{ item in submodel.items }}">
+        <gt-item item="{{item}}" model="{{submodel}}" url="{{url}}/tasks/{{item.id}}"></gt-item>
       </template>
     </ul>
   </template>
@@ -16,10 +16,10 @@
     Polymer('gt-list', {
       ready: function() {
         this.asyncMethod(function() {
-          this.model = document.createElement('gt-model');
-          this.model.items = []
-          this.model.url = '/lists/' + this.list.id + '/tasks';
-          this.$.outer.appendChild(this.model);
+          this.submodel = document.createElement('gt-model');
+          this.submodel.items = []
+          this.submodel.url = '/lists/' + this.list.id + '/tasks';
+          this.$.outer.appendChild(this.submodel);
         });
       }
     });

@@ -27,7 +27,7 @@
           url: _self.url,
           data: JSON.stringify(item),
           success: function(response, status){
-            _self.items.push(item);
+            _self.items.push(response);
           }
         });
       },
